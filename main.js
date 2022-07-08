@@ -14,8 +14,6 @@ function createWindow(){
   win.on('closed', () => {
     win = null;
   });
-  win.openDevTools();
-  win.maximize();
 }
 
 app.on('ready', createWindow);

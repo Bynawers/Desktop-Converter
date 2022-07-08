@@ -2,6 +2,9 @@ const $ = require('jquery');
 const {remote} = require('electron');
 var win = remote.getCurrentWindow();
 
+let title = document.getElementById('title').innerHTML;
+document.getElementById('titleShown').innerHTML = title;
+
 $('#minimize').click(function(){
   win.minimize();
 });
