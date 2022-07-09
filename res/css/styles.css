@@ -61,6 +61,7 @@ span {
   text-align: center;
   color: #f7f7f7;
   transition: all ease-in-out .2s;
+  cursor: pointer;
 }
 
 #buttons #close:hover {
@@ -70,6 +71,10 @@ span {
   background-color: #333333;
 }
 
+
+
+/* Left side */
+
 #drawerContainer {
   float: left;
   height: 100%;
@@ -77,14 +82,43 @@ span {
   background-color: #444444;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+
+.select {
+  height: 15%;
+  width: 100%;
+  background-color: #333333;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-
-#drawerTitle {
-  margin-bottom: 5%;
+.select:hover {
+  background-color: #555555 !important;
+  transition: all ease-in-out .2s;
 }
 
+#output {
+  padding-top: 5%;
+  height: 300px;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+#version {
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+
+
+/*Right part*/
 #contentContainer {
   height: 100%;
   float: left;
@@ -93,7 +127,7 @@ span {
 }
 
 #contentTitle {
-  height: 20%;
+  height: 10%;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -101,20 +135,60 @@ span {
   align-items: center;
   font-size: 20px;
   flex-direction: row;
+  background-color: #333333;
 }
 
-.select {
-  height: 10%;
+#contentInput {
+  height: 18%;
   width: 100%;
-  background-color: #333333;
   display: flex;
+  align-items: center;
   flex-direction: column;
+}
+#urlInput {
+  width:100%; 
+  height: 50px; 
+  text-align: center;
+}
+#submitButton {
+  height: 25px;
+  background-color: white;
+  cursor: pointer;
+}
+#submitButton:hover {
+  background-color: rgba(255, 255, 255, 0.766);
+  transition: all ease-in-out .2s;
+}
+.input {
+  margin-top: 15px;
+  width: 50%;
+  height: 25px;
+  margin-left: 10px;
+  background-color: white;
+  cursor: pointer;
+  text-align: center;
+}
+.input:hover {
+  background-color: rgba(255, 255, 255, 0.766);
+  transition: all ease-in-out .2s;
+}
+
+#contentConvert {
+  height: 33%;
+  width: 100%;
+  display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 5%;
+  flex-direction: column;
 }
-.select:hover {
-  background-color: #555555;
+#download {
+  color: rgba(255, 255, 255, 0.34);
+  width: 100px;
+  height: 100px;
+}
+#download:hover {
+  color: red !important;
+  transition: all ease-in-out .2s;
 }
 
 ::-webkit-scrollbar {

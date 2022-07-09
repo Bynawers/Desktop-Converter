@@ -13,7 +13,9 @@
     "bootstrap-icons": "^1.8.3",
     "electron": "^1.8.8",
     "jquery": "^3.6.0",
-    "jsdom": "^9.12.0"
+    "jsdom": "^9.12.0",
+    "youtube-mp3-downloader": "^0.7.10",
+    "ytdl-core": "^4.11.0"
   },
   "_note": "change Theme to light in order to change themes",
   "Theme": "dark"

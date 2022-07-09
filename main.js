@@ -2,6 +2,8 @@ const {app, BrowserWindow} = require('electron');
 const path = require('path');
 const url = require('url');
 
+ELECTRON_ENABLE_LOGGING=1;
+
 let win;
 
 function createWindow(){
@@ -14,6 +16,7 @@ function createWindow(){
   win.on('closed', () => {
     win = null;
   });
+  win.webContents.openDevTools()
 }
 
 app.on('ready', createWindow);

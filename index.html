@@ -32,20 +32,45 @@
 
       <div id="drawerContainer">
 
-        <div id="drawerTitle">
-          <span>Select option :</span>
-        </div>
-
-        <div class="select">
+        <br/>
+        <span style="font-weight: bold">Select option :</span>
+        <br/>
+        <div class="select" id="mp3">
           <span>mp3</span>
         </div>
-
-        <div class="select">
+        <div class="select" id="mp4">
           <span>mp4</span>
+        </div>
+
+        <br/>
+        <span style="font-weight: bold">Select Quality</span>
+        <br/>
+        <div class="select" id="low">
+          <span>low</span>
+        </div>
+        <div class="select" id="medium">
+          <span>medium</span>
+        </div>
+        <div class="select" id="high">
+          <span>high</span>
+        </div>
+
+
+        <div style="font-weight: bold" id="output">
+          <div>
+            <span>output :</span>
+          </div>
+        </div>
+
+        <div id="version">
+          <div style="margin-left: 5px; margin-bottom: 5px">
+            <span>v1.0</span>
+          </div>
         </div>
       </div>
 
       <div id="contentContainer">
+
         <div id="contentTitle">
           <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="#ff0000" class="bi bi-youtube" viewBox="0 0 16 16">
             <path d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.007 2.007 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.007 2.007 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31.4 31.4 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.007 2.007 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A99.788 99.788 0 0 1 7.858 2h.193zM6.4 5.209v4.818l4.157-2.408L6.4 5.209z"/>
@@ -53,6 +78,38 @@
           <div style="margin-right: 3%"></div>
           <span>Youtube Converter</span>
         </div>
+
+        <div id="contentInput">
+          <br/>
+          <span id="step1">Etape 1 : url video</span>
+          <div id="urlInput">
+            <input type="text" class="input" id="inputUrl" name="name" required minlength="4" maxlength="100" size="10">
+            <input type="button" value="Submit" id="submitButton" >
+          </div> 
+          <span id="error"></span>
+        </div>
+
+        <div id="contentInput">
+          <span id="step2">Etape 2 : save folder</span>
+          <label class="input" style="width: 20%; height: 25px">
+            Select folder
+            <input type="file" style="display: none;" id="inputFile" webkitdirectory directory multiple>
+          </label>
+          <br/>
+        </div>
+
+        <div id="contentConvert">
+          <span id="step3">Etape 3 : Choose a type export</span>
+          <br/>
+          <br/>
+          <br/>
+          <span id="step4">Etape 4 : Convertion</span>
+          <br/>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-file-earmark-arrow-down-fill" viewBox="0 0 16 16" id="download">
+            <path d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0zM9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1zm-1 4v3.793l1.146-1.147a.5.5 0 0 1 .708.708l-2 2a.5.5 0 0 1-.708 0l-2-2a.5.5 0 0 1 .708-.708L7.5 11.293V7.5a.5.5 0 0 1 1 0z"/>
+          </svg>
+        </div>
+
       </div>
 
     </div>
