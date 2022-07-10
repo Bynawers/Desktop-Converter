@@ -11,12 +11,14 @@ function createWindow(){
   win.loadURL(url.format({
     pathname: path.join(__dirname, 'index.html'),
     protocol: 'file:',
-    slashes: true
+    slashes: true,
+    resizable: false
   }));
   win.on('closed', () => {
     win = null;
   });
   win.webContents.openDevTools()
+  win.setResizable(false);
 }
 
 app.on('ready', createWindow);

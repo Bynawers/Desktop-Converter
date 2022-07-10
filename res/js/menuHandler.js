@@ -27,13 +27,14 @@ $('#minimize').click(function(){
 $('#close').click(function(){
   win.close();
 });
+/*
 $('#maximize').click(function() {
   if(win.isMaximized()){
       win.unmaximize();
   }else{
       win.maximize();
   }
-});
+});*/
 
 $('#submitButton').click(function(){
 
@@ -72,13 +73,13 @@ $('#download').click(function(){
 
 $('#mp3').click(function(){
   dataMusic.optionConversion = 'mp3';
-  $("#mp4").css("background-color", "#333333");
+  $("#mp4").css("background-color", "#1c1d25");
   $("#mp3").css("background-color", "#AA0000");
   checkStep3();
 });
 $('#mp4').click(function(){
   dataMusic.optionConversion = 'mp4';
-  $("#mp3").css("background-color", "#333333");
+  $("#mp3").css("background-color", "#1c1d25");
   $("#mp4").css("background-color", "#AA0000");
   checkStep3();
 });
@@ -86,23 +87,23 @@ $('#mp4').click(function(){
 $('#low').click(function(){
   dataMusic.optionQuality = 'low';
   $("#low").css("background-color", "#AA0000");
-  $("#medium").css("background-color", "#333333");
-  $("#high").css("background-color", "#333333");
+  $("#medium").css("background-color", "#1c1d25");
+  $("#high").css("background-color", "#1c1d25");
   checkStep3();
   canDownload();
 });
 $('#medium').click(function(){
   dataMusic.optionQuality = 'medium';
-  $("#low").css("background-color", "#333333");
+  $("#low").css("background-color", "#1c1d25");
   $("#medium").css("background-color", "#AA0000");
-  $("#high").css("background-color", "#333333");
+  $("#high").css("background-color", "#1c1d25");
   checkStep3();
   canDownload();
 });
 $('#high').click(function(){
   dataMusic.optionQuality = 'high';
-  $("#low").css("background-color", "#333333");
-  $("#medium").css("background-color", "#333333");
+  $("#low").css("background-color", "#1c1d25");
+  $("#medium").css("background-color", "#1c1d25");
   $("#high").css("background-color", "#AA0000");
   checkStep3();
   canDownload();
@@ -129,8 +130,18 @@ async function infoMusic() {
   dataMusic.info = await ytdl.getBasicInfo(dataMusic.url)
   dataMusic.name = dataMusic.info.videoDetails.title;
   myConsole.log(dataMusic.name);
-
+  $("#outputText").text(dataMusic.name);
   canDownload();
+}
+
+function refreshMusic() {
+  dataMusic.url = "none";
+  dataMusic.name = "none";
+  dataMusic.info = "none";
+  $("#error").css("color", "transparent");
+  $("#step1").css("color", "white");
+  $("#inputUrl").val("");
+  $("#outputText").text("");
 }
 
 function downloadMusic() {
@@ -146,6 +157,6 @@ function downloadMusic() {
       ytdl(dataMusic.url, { filter: format => format.container === 'mp4' })
       .pipe(fs.createWriteStream(dataMusic.path+"/"+dataMusic.name+".mp4"));
     }
+    refreshMusic();
   }
-
 }
