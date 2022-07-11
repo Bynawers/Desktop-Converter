@@ -20,6 +20,8 @@ let dataMusic = {
   info: "none"
 }
 
+$(".content2").hide();
+
 /* menu */
 $('#minimize').click(function(){
   win.minimize();
@@ -87,15 +89,6 @@ $('#mp4').click(function(){
 $('#low').click(function(){
   dataMusic.optionQuality = 'low';
   $("#low").css("background-color", "#AA0000");
-  $("#medium").css("background-color", "#1c1d25");
-  $("#high").css("background-color", "#1c1d25");
-  checkStep3();
-  canDownload();
-});
-$('#medium').click(function(){
-  dataMusic.optionQuality = 'medium';
-  $("#low").css("background-color", "#1c1d25");
-  $("#medium").css("background-color", "#AA0000");
   $("#high").css("background-color", "#1c1d25");
   checkStep3();
   canDownload();
@@ -103,11 +96,32 @@ $('#medium').click(function(){
 $('#high').click(function(){
   dataMusic.optionQuality = 'high';
   $("#low").css("background-color", "#1c1d25");
-  $("#medium").css("background-color", "#1c1d25");
   $("#high").css("background-color", "#AA0000");
   checkStep3();
   canDownload();
 });
+
+$('#again').click(function(){
+  refreshMusic();
+  $(".content").show();
+  $(".content2").hide();
+  $("#progressBar").val(0);
+  $("#progressText").text("0%");
+  $("#infoProgress").text("Téléchargement en cours...");
+  $("#infoProgress").css("color", "white");
+});
+
+function refreshMusic() {
+  dataMusic.url = "none";
+  dataMusic.name = "none";
+  dataMusic.info = "none";
+  $("#error").css("color", "transparent");
+  $("#step1").css("color", "white");
+  $("#inputUrl").val("");
+  $("#outputText").text("");
+  $("#error").text("");
+  $("#error").css("color", "transparent");
+}
 
 function checkStep3() {
   if (dataMusic.optionConversion != "none" && dataMusic.optionQuality != "none"){
@@ -134,29 +148,43 @@ async function infoMusic() {
   canDownload();
 }
 
-function refreshMusic() {
-  dataMusic.url = "none";
-  dataMusic.name = "none";
-  dataMusic.info = "none";
-  $("#error").css("color", "transparent");
-  $("#step1").css("color", "white");
-  $("#inputUrl").val("");
-  $("#outputText").text("");
-}
-
 function downloadMusic() {
 
-  if (canDownload() == true){
-    alert(dataMusic.path+"/"+dataMusic.name+".mp3");
+  $(".content").hide()
+  $(".content2").show()
 
-    if (dataMusic.optionConversion == "mp3") {
-      ytdl(dataMusic.url, { filter: 'audioonly' })
-      .pipe(fs.createWriteStream(dataMusic.path+"/"+dataMusic.name+".mp3"));
-    }
-    else {
-      ytdl(dataMusic.url, { filter: format => format.container === 'mp4' })
-      .pipe(fs.createWriteStream(dataMusic.path+"/"+dataMusic.name+".mp4"));
-    }
-    refreshMusic();
+  let qualitySelect;
+  let convertSelect;
+
+  let sum = 0;
+  let totalSize = 0;
+  let newValue = 0;
+
+  if (dataMusic.optionConversion === "mp4") { 
+    qualitySelect = (dataMusic.optionQuality === "high") ? "highestvideo" : "lowestvideo";
+    convertSelect = "audioandvideo";
+  }
+  if (dataMusic.optionConversion === "mp3") { 
+    qualitySelect = (dataMusic.optionQuality === "high") ? "highestaudio" : "lowestaudio";
+    convertSelect = "audioonly";
+  }
+
+  if (canDownload() == true){
+
+    ytdl(dataMusic.url, { filter: convertSelect, quality: qualitySelect })
+    .on('response', function(res){
+      totalSize = res.headers['content-length'];
+    })
+    .on( 'data', function(data){ 
+      sum = sum + data.length;
+      newValue = ( (sum/totalSize).toFixed(2) ) * 100
+      $("#progressBar").val(newValue);
+      $("#progressText").text(newValue.toFixed(2)+"%");
+    })
+    .on( 'finish', function(){
+      $("#infoProgress").text("Téléchargement terminé");
+      $("#infoProgress").css("color", "green");
+    })
+    .pipe(fs.createWriteStream(dataMusic.path+"/"+dataMusic.name+"."+dataMusic.optionConversion));
   }
 }

@@ -44,9 +44,6 @@
         <div class="select" id="low">
           <span>low</span>
         </div>
-        <div class="select" id="medium">
-          <span>medium</span>
-        </div>
         <div class="select" id="high">
           <span>high</span>
         </div>
@@ -57,8 +54,7 @@
             <span>output :</span>
             <br/>
             <br/>
-            <br/>
-            <span id="outputText">blabla</span>
+            <span id="outputText"></span>
           </div>
         </div>
 
@@ -79,7 +75,7 @@
           <span>Youtube Converter</span>
         </div>
 
-        <div id="contentInput">
+        <div id="contentInput" class="content">
           <br/>
           <span id="step1">Etape 1 : url video</span>
           <div id="urlInput">
@@ -89,7 +85,7 @@
           <span id="error"></span>
         </div>
 
-        <div id="contentInput">
+        <div id="contentInput" class="content">
           <br/>
           <span id="step2">Etape 2 : save folder</span>
           <label class="input" style="width: 20%; height: 25px">
@@ -99,7 +95,7 @@
           <br/>
         </div>
 
-        <div id="contentConvert">
+        <div id="contentConvert" class="content">
           <span id="step3">Etape 3 : Choose a type export</span>
           <br/>
           <br/>
@@ -109,6 +105,29 @@
           <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-file-earmark-arrow-down-fill" viewBox="0 0 16 16" id="download">
             <path d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0zM9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1zm-1 4v3.793l1.146-1.147a.5.5 0 0 1 .708.708l-2 2a.5.5 0 0 1-.708 0l-2-2a.5.5 0 0 1 .708-.708L7.5 11.293V7.5a.5.5 0 0 1 1 0z"/>
           </svg>
+        </div>
+
+        <div class="content2">
+          <br/>
+          <br/>
+          <span id="progressText">0%</span>
+        </div>
+        <div id="progressContainer" class="content2">
+          <progress id="progressBar" value="0" max="100"> 0% </progress>
+        </div>
+
+        <div class="content2" style="margin-top: 5%">
+          <span id="infoProgress">Téléchargement en cours...</span>
+        </div>
+
+        <div id="againContainer" class="content2">
+          <div id="again">
+            <span>OK</span>
+          </div>
+        </div>
+
+        <div>
+
         </div>
 
       </div>
