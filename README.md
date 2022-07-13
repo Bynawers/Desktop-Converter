@@ -9,8 +9,6 @@ Converter youtube to audio/video with interface
 
 <img src="./img/preview.png" width="1000" height="600">
 
-<img src="./img/preview2.png" width="1000" height="600">
-
 ## Install
 
 Packaging (mp) or terminal
