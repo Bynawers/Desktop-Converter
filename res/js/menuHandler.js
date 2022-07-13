@@ -45,13 +45,13 @@ $('#submitButton').click(function(){
   let isValid = ytdl.validateURL(inputValue);
 
   if (!isValid){
-    $("#error").text("error : invalid URL");
+    $("#error").text("URL invalide");
     $("#error").css("color", "red");
     dataMusic.url = "none";
   }
 
   else {
-    $("#error").text("good URL");
+    $("#error").text("bon URL");
     $("#error").css("color", "green");
     $("#step1").css("color", "green");
     dataMusic.url = inputValue;
@@ -150,9 +150,6 @@ async function infoMusic() {
 
 function downloadMusic() {
 
-  $(".content").hide()
-  $(".content2").show()
-
   let qualitySelect;
   let convertSelect;
 
@@ -169,7 +166,10 @@ function downloadMusic() {
     convertSelect = "audioonly";
   }
 
-  if (canDownload() == true){
+  if (canDownload() === true){
+    
+    $(".content").hide();
+    $(".content2").show();
 
     ytdl(dataMusic.url, { filter: convertSelect, quality: qualitySelect })
     .on('response', function(res){
