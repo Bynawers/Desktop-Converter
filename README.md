@@ -13,8 +13,6 @@ Converter youtube to audio/video with interface
 
 Packaging (mp) or terminal
 
-### Dependencies
-
 **Require nodejs**
 
     node -v
