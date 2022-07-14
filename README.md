@@ -7,7 +7,7 @@
 
 Converter youtube to audio/video with interface
 
-<img src="./img/preview.png" width="1000" height="550">
+<img src="./img/preview.png" width="1000" height="520">
 
 ## Install
 
